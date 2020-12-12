@@ -4,5 +4,5 @@
 
 ## 技术栈
 
-react17+koa2
+react17全家桶+koa2+mysql
 
