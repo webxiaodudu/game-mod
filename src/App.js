@@ -1,9 +1,15 @@
+import {useState} from 'react'
 
-
-function App() {
-  return (
-   <h1>准备做一个react hook版的游戏资源网站(dev)!</h1>
-  );
+function App () {
+ const [count,setCount] = useState(0)
+ 
+ const increament = () => {
+  setCount(count+1)
+ }
+ return ( <div>
+   <h1>{count}</h1>
+    <button onClick={increament}>增加</button>
+   </div>)
+ 
 }
-
 export default App;
