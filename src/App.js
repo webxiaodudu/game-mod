@@ -1,16 +1,38 @@
 
-import { Button } from 'antd';
-function App () {
+import { Layout ,Row, Col} from 'antd';
+import RouterView  from "./routes";
+import Logo from './components/logo'
+import Nav from './components/nav'
 
- return (
-    <div className="site-button-ghost-wrapper">
-            <Button ghost>Ghost</Button>
-            <Button ghost disabled>
-                Ghost(disabled)
-            </Button>
-        </div>
- )
-        
- 
+const { Header, Footer, Content } = Layout;
+
+function App(props) {
+
+    return (
+        <Layout>
+            <Header>
+                <div className="header-wrap">
+                    <Row>
+                        <Col span={6}>
+                            <Logo />     
+                        </Col>
+                        <Col span={12}>
+                            <Nav />
+                        </Col>
+                        <Col span={6}>
+                           
+                        </Col>
+                    </Row>
+                </div>
+                
+           </Header>
+            <Content className="mainbody">
+                <RouterView />
+            </Content>
+            <Footer>Footer</Footer>
+        </Layout>
+    )
+
+
 }
 export default App;
