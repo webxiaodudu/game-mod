@@ -1,7 +1,6 @@
 import {Switch,Route } from 'react-router-dom'
 import routes from './config'
 function Routes(props) {
-   console.log(11111111)
    return <Switch>
         {
             routes.map((item,index)=>{
