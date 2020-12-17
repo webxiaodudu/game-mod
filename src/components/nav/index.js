@@ -26,8 +26,7 @@ function Nav(){
                     </Menu.Item>
                 })
             }
-        {/* <Menu.Item key="mail">
-        </Menu.Item> */}
+
     </Menu> 
 }
 export default Nav

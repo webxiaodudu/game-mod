@@ -20,7 +20,7 @@ function App(props) {
                             <Nav />
                         </Col>
                         <Col span={6}>
-                           
+                           <div>登录 注册</div>
                         </Col>
                     </Row>
                 </div>
