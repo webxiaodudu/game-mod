@@ -3,6 +3,7 @@ import Undefined from '../pages/404'
 import Modpage from '../pages/modpage'
 import Strategy from '../pages/strategy'
 import Comment from '../pages/comment'
+import Regesiter from '../pages/regesiter'
 const routes = [
     //首页
     {
@@ -34,6 +35,14 @@ const routes = [
       exact: false,
       render(props) {
         return <Comment {...props} />
+      }
+    },
+    //注册页
+    {
+      path: '/regesiter',
+      exact: false,
+      render(props) {
+        return <Regesiter {...props} />
       }
     },
     //404

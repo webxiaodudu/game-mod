@@ -3,6 +3,7 @@ import { Layout ,Row, Col} from 'antd';
 import RouterView  from "./routes";
 import Logo from './components/logo'
 import Nav from './components/nav'
+import Login from './components/login'
 
 const { Header, Footer, Content } = Layout;
 
@@ -20,7 +21,7 @@ function App(props) {
                             <Nav />
                         </Col>
                         <Col span={6}>
-                           <div>登录 注册</div>
+                           <Login />
                         </Col>
                     </Row>
                 </div>
