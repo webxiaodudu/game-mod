@@ -1,6 +1,18 @@
 const CracoLessPlugin = require('craco-less');
 
 module.exports = {
+  devServer: {
+    proxy:{
+      '/api': {
+        target: 'http://127.0.0.1:8888',
+        pathRewrite: {'^/api' : ''}
+      },
+      '/static': {
+        target: 'http://127.0.0.1:8888',
+        
+      }
+    }
+  },
   plugins: [
     {
       plugin: CracoLessPlugin,
