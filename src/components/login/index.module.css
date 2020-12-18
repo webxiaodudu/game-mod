@@ -1,0 +1,32 @@
+.logincontent{
+    width:200px;
+    height:64px;
+    display:flex;
+    position: relative;
+}
+.loginBtnBg{
+    width:80px;
+    text-align: center;
+    color:#101010;
+    font-weight:bold;
+    background-color:#f5e134;
+    transform: skewX(-30deg);
+
+}
+.loginBtn{
+    color:#101010;
+    position:absolute;
+    left:29px;
+    font-weight:bold;
+    top:0;
+    cursor: pointer;
+
+}
+.loginBtn:hover{
+    color:#101010;
+}
+.regesiterBtn{
+    color:#fff;
+    width:80px;
+    text-align:center;
+}
