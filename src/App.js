@@ -1,6 +1,6 @@
 
 import { Layout ,Row, Col} from 'antd';
-import RouterView  from "./routes";
+import Routes  from "./routes";
 import Logo from './components/logo'
 import Nav from './components/nav'
 import Login from './components/login'
@@ -28,7 +28,7 @@ function App(props) {
                 
            </Header>
             <Content className="mainbody">
-                <RouterView />
+                <Routes />
             </Content>
             <Footer>Footer</Footer>
         </Layout>

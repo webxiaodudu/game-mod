@@ -1,0 +1,50 @@
+.regesiterBox{
+    width:500px;
+    margin: 20px auto;
+    padding:20px;
+    background:rgba(255,255,255,0.3);
+    
+}
+
+.labelName{
+    color:#fff;
+}
+.stepWrap{
+    padding:20px 50px;
+}
+:global(.ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon .ant-steps-icon){
+    color:#101010!important;
+}
+/* :global(.ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-icon){
+    background:#1890ff!important;
+    border-color:#fff!important;
+}
+:global(.ant-input:hover){
+    border-color:#1890ff!important;
+}
+:global(#regesiter_username::selection){
+    background:#1890ff!important;
+}
+:global(.ant-radio-inner:after){
+    background:red!important;
+}
+:global(.ant-radio-checked .ant-radio-inner){
+    border-color:red!important;
+} */
+:global(.ant-radio-inner:after){
+    background:#101010!important;
+}
+:global(.ant-radio-checked .ant-radio-inner){
+    border-color:#101010!important;
+}
+:global(.ant-steps-item-title){
+    color:#f5e134!important;
+
+}
+:global(.ant-steps-item-description){
+    color:#f5e134!important;
+
+}
+:global(.padd20){
+    padding:20px;
+}
