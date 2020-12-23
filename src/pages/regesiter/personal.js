@@ -1,5 +1,7 @@
 import { Form, Input, Button,DatePicker,InputNumber  } from 'antd';
 import style from './index.module.css'
+import { registerApi } from '@/api/register.js'
+
 const { TextArea } = Input;
 
 export default function PersonalInfo(props){
@@ -29,14 +31,18 @@ export default function PersonalInfo(props){
         ],
       };
 
-      const onFinish = (values) => {
-         
+      const onFinish = async (values) => {
+         //校验完成提交数据
           const {datepicker} = values
            values.datepicker= datepicker.format('YYYY-MM-DD')
          const ajaxOption = {...state,...values}
-        console.log(ajaxOption,' ajaxOption')
+         const {data} = await registerApi(ajaxOption)
+         if(data){
+           console.log(data,' --响应数据')
            history.push('/regesiter/finish')
            setCurrent(2)
+         }
+       
       };
     
       const onFinishFailed = (errorInfo) => {

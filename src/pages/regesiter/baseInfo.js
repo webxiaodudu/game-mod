@@ -87,7 +87,7 @@ export default function BaseInfo(props){
                   }),
               ]}
           >
-              <Input />
+              <Input.Password />
           </Form.Item>
           <Form.Item
           label="手机号"

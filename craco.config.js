@@ -1,5 +1,6 @@
 const CracoLessPlugin = require('craco-less');
-
+const path = require('path')
+console.log(path.resolve(__dirname, 'src'))
 module.exports = {
   devServer: {
     proxy:{
@@ -11,6 +12,12 @@ module.exports = {
         target: 'http://127.0.0.1:8888',
         
       }
+    }
+  },
+
+  webpack: {
+    alias: {
+      "@": path.resolve(__dirname,"src"),
     }
   },
   plugins: [
