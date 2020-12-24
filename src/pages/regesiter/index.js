@@ -2,6 +2,7 @@ import {Fragment} from 'react'
 import { Form, Input, Button,Radio ,Steps,DatePicker,InputNumber  } from 'antd';
 import style from './index.module.css'
 import { Route } from 'react-router-dom'
+import {CacheSwitch, CacheRoute} from 'react-cache-router';
 import  BaseInfo  from "./baseInfo";
 import PersonalInfo from './personal'
 import Finish from './finishRegister'
@@ -21,19 +22,20 @@ export default function Regesiter(props){
                 <Step title="完成注册"  />
             </Steps>  
         </div>
-        
-        <Route 
-            exact={true} 
-            path="/regesiter"
-            render={(routerProps)=>{
-                return <BaseInfo {...routerProps} setCurrent={setCurrent}  />
-            }} 
-         />
-        <Route  
-            path="/regesiter/person"
-            render={(routerProps)=><PersonalInfo {...routerProps}  setCurrent={setCurrent}/>}
-        />
-        <Route  path="/regesiter/finish" component={Finish} />
+        <CacheSwitch>
+            <CacheRoute 
+                exact={true} 
+                path="/regesiter"
+                render={(routerProps)=>{
+                    return <BaseInfo {...routerProps} setCurrent={setCurrent}  />
+                }} 
+            />
+            <CacheRoute  
+                path="/regesiter/person"
+                render={(routerProps)=><PersonalInfo {...routerProps}  setCurrent={setCurrent}/>}
+            />
+            <CacheRoute  path="/regesiter/finish" component={Finish} />
+        </CacheSwitch>
     
     </Fragment>)
 }

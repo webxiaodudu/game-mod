@@ -3,7 +3,7 @@
     margin: 20px auto;
     padding:20px;
     background:rgba(255,255,255,0.3);
-    
+    position:relative;
 }
 
 .labelName{
@@ -47,4 +47,20 @@
 }
 :global(.padd20){
     padding:20px;
+}
+.alert{
+    position:absolute;
+    left:250px;
+    top:-100px;
+    transform: translateX(-50%);
+    
+    opacity: 0;
+    display:none;
+}
+:global(.activeShowAlert){
+    display:block;
+    top:-50px;
+    opacity:1;
+    transition: 1s all ease-in;
+
 }

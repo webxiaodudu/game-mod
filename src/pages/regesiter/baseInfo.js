@@ -1,11 +1,14 @@
-import { Form, Input, Button, Radio, Steps, DatePicker, InputNumber } from 'antd';
+import { Form, Input, Button, Radio, Steps, DatePicker, InputNumber,Alert} from 'antd';
 import style from './index.module.css'
-import useChangeStep from './hooks'
+import { checkRegisterInfoApi } from '@/api/register'
+import { useState } from 'react'
+
+
 export default function BaseInfo(props){
     
    const { history ,setCurrent}  = props
-   
-
+   const [isShow,setShow] = useState(false)
+   const [errorMsg,setMsg] = useState('')
     const layout = {
         labelCol: {
           span: 8,
@@ -20,15 +23,28 @@ export default function BaseInfo(props){
           span: 16,
         },
       };
-      const onFinish = (values) => {
+      const onFinish =async (values) => {
+        setShow(false)
+        setMsg('')
+        const { data } = await checkRegisterInfoApi(values)
+        const { code,message } = data;
+        if(code==-1){
+          //该用户名，或者手机号，或者邮箱已被注册
+          setShow(true)
+          setMsg(message)
+        }else{
+          //可以继续下一步填写资料
+          history.push('/regesiter/person',values);
+          setCurrent(1)
+        }
+
       
-        history.push('/regesiter/person',values);
-        setCurrent(1)
+       
       };
     
       const onFinishFailed = (errorInfo) => {
           
-        console.log('Failed:', errorInfo);
+      
       };
 
       return ( <div className={style.regesiterBox} >
@@ -141,6 +157,9 @@ export default function BaseInfo(props){
             </Button>
       </Form.Item>
       </Form>
+      <div className={`${style.alert} ${isShow ? 'activeShowAlert':''}`}  >
+      <Alert banner message={errorMsg} type="error" />
+      </div>
      
   </div>)
 
