@@ -2,7 +2,7 @@ import {NavLink} from 'react-router-dom'
 import style from './index.module.css'
 import { Fragment,useState } from 'react'
 import { Modal ,Form, Input} from 'antd';
-
+import {loginApi} from '@/api/login'
 
 const layout = {
   labelCol: {
@@ -26,16 +26,29 @@ export default function Login(){
         //提交表单数据
         loginForm.submit();
         //setShow(false);
+      
       };
     
       const handleCancel = () => {
         setShow(false);
       };
 
-      const onFinish = (values)=>{
+      const onFinish =async (values)=>{
         //验证通过，走登录接口
+      const res = await loginApi(values)
+     console.log(res)
+        if(res.headers&&res.headers.authorization){
+          localStorage.setItem('jwt',res.headers.authorization)
+        }
+       const { code } = res.data;
+       if(code==0){
+
+          setShow(false);
+       }
+       else{
+
+       }
        
-       // console.log('Success:', values);
       }
       const onFinishFailed = (errorInfo) => {
         //验证未通过

@@ -8,7 +8,7 @@ const request = axios.create({
 
 axios.interceptors.request.use(function (config) {
     //判断是否有token有的话加上token
-    let Authorization = Cookies.get('token');
+    let Authorization = localStorage.getItem('jwt')
     if (Authorization) {
       config.headers.Authorization = Authorization;
     }

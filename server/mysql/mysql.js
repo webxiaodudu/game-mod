@@ -3,9 +3,11 @@ const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
     host: '127.0.0.1',
-    user: 'webxiaodudu',
+    //user: 'webxiaodudu',
+    user: 'root',
     database: 'game_mod',
-    password:'pltkd@198526'
+    //password:'pltkd@198526'
+    password:'123456'
   });
 
 function query (sql,value){
