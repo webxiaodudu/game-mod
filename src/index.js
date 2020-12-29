@@ -11,9 +11,9 @@ import 'moment/locale/zh-cn';
 moment.locale('zh-cn');
 ReactDOM.render(
   <BrowserRouter>
-    <ConfigProvider locale={zhCN}>
-      <App />
-    </ConfigProvider>
+      <ConfigProvider locale={zhCN}>
+        <App />
+      </ConfigProvider>
   </BrowserRouter>,
   document.getElementById('root')
 );

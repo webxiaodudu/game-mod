@@ -2,6 +2,8 @@ import {NavLink} from 'react-router-dom'
 import style from './index.module.css'
 import { Fragment,useState } from 'react'
 import { Modal ,Form, Input} from 'antd';
+
+
 const layout = {
   labelCol: {
     span: 8,
@@ -14,7 +16,8 @@ const layout = {
 export default function Login(){
     const [loginForm] = Form.useForm();
     const [isShow,setShow] = useState(false)
-
+  
+   
      const showModal = () => {
         setShow(true);
       };
@@ -31,7 +34,8 @@ export default function Login(){
 
       const onFinish = (values)=>{
         //验证通过，走登录接口
-        console.log('Success:', values);
+       
+       // console.log('Success:', values);
       }
       const onFinishFailed = (errorInfo) => {
         //验证未通过
