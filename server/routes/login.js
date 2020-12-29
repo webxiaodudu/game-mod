@@ -1,6 +1,8 @@
 const KoaRouter = require('@koa/router');
+
 const router = new KoaRouter()
 
+const jwt = require('jsonwebtoken');
 const { SucessModel ,ErrorModel } = require('../model/index')
 const { queryUser } = require('../controller/login')
 
@@ -19,6 +21,8 @@ router.post('/login',async (ctx)=>{
     const [res] = await queryUser(username,password);
 
     if(res){
+       const token = jwt.sign({username,password},'wangpaijun')
+        ctx.set('Authorization',token)
         return ctx.body = new SucessModel(res,'登陆成功')
     }
     else{
