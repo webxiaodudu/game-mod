@@ -1,7 +1,7 @@
 import {NavLink} from 'react-router-dom'
 import style from './index.module.css'
 import { Fragment,useState } from 'react'
-import { Modal ,Form, Input} from 'antd';
+import { Modal ,Form, Input,message} from 'antd';
 import {loginApi} from '@/api/login'
 
 const layout = {
@@ -36,17 +36,18 @@ export default function Login(){
       const onFinish =async (values)=>{
         //验证通过，走登录接口
       const res = await loginApi(values)
-     console.log(res)
+        
+       const { code,message:msg} = res.data;
+       if(code==0){
+         
         if(res.headers&&res.headers.authorization){
           localStorage.setItem('jwt',res.headers.authorization)
         }
-       const { code } = res.data;
-       if(code==0){
 
           setShow(false);
        }
        else{
-
+        message.error(msg);
        }
        
       }
