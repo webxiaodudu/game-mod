@@ -3,6 +3,7 @@ import style from './index.module.css'
 import { Fragment,useState } from 'react'
 import { Modal ,Form, Input,message} from 'antd';
 import {loginApi} from '@/api/login'
+import { useDispatch } from 'react-redux';
 
 const layout = {
   labelCol: {
@@ -16,7 +17,7 @@ const layout = {
 export default function Login(){
     const [loginForm] = Form.useForm();
     const [isShow,setShow] = useState(false)
-  
+    const dispatch = useDispatch()
    
      const showModal = () => {
         setShow(true);
@@ -39,12 +40,14 @@ export default function Login(){
         
        const { code,message:msg} = res.data;
        if(code==0){
-         
+         //登录成功后从返回的头信息里获取jwt存入缓存，同步redux中的用户信息
         if(res.headers&&res.headers.authorization){
           localStorage.setItem('jwt',res.headers.authorization)
         }
-
+          
           setShow(false);
+         
+          dispatch({type:'Logined',userInfo:res.data.data})
        }
        else{
         message.error(msg);
@@ -69,6 +72,12 @@ export default function Login(){
       {...layout}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
+      onKeyDown={(e)=>{
+        const {code} = e
+        if(code=="Enter"){
+          handleOk()
+        }
+      }}
     >
       <Form.Item
         label="用户名"
