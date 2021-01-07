@@ -1,7 +1,61 @@
+.bannerBox{
+
+    height:600px;
+    position: relative;
+}
 .bannerWrap{
     width:100vw;
-    height:400px;
-   background-repeat: no-repeat;
-   background-size: cover;
-   background-position:center;
+    height:600px;
+    color:#fff;
+}
+.bigImg{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position:center;
+    width:100vw;
+    height:600px;
+}
+.bannerInfo{
+    display: flex;
+    padding-top:100px;
+    justify-content:center;
+    flex-direction:column;
+    align-items: center;
+}
+.bannerTile{
+    color:#e09e37;
+    font-weight:bold;
+    font-family: '微软雅黑';
+    font-size:36px;
+    text-align:center;
+    text-shadow: 0px 6px 5px rgba(0,0,0,.5);
+}
+.subtit{
+    font-weight:bold;
+    font-family: '微软雅黑';
+    font-size:46px;
+    text-align:center;
+    text-shadow: 0px 6px 5px rgba(0,0,0,.5);
+    color:#fff;
+}
+.info{
+    text-shadow: 0px 6px 5px rgba(0,0,0,.5);
+    line-height:30px;
+}
+.leftBtn{
+    position:absolute;
+    left:5%;
+    top:50%;
+    font-size:50px;
+    font-weight:bold;
+    cursor: pointer;
+
+}
+.rightBtn{
+    position:absolute;
+    right:5%;
+    top:50%;
+    font-size:50px;
+    font-weight:bold;
+    cursor: pointer;
 }
