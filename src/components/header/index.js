@@ -25,7 +25,6 @@ export default function HeaderComponent(){
                         </Col>
                     </Row>
                 </div>
-                
            </Header>
     </div>
 }
