@@ -1,4 +1,10 @@
+import Header from '@/components/header'
+import { Affix } from "antd";
 function Strategy(props) {
-    return <div>攻略</div>
+    return <div>
+             <Affix offsetTop={0}>
+                        <Header />
+                </Affix>
+        攻略</div>
 }
 export default Strategy

@@ -1,5 +1,6 @@
 import Header from '@/components/header'
 import Banner from './banner'
+import HotPC from './hotpc'
 import { Affix } from "antd";
 function IndexPage(props){
     return <div>
@@ -7,6 +8,8 @@ function IndexPage(props){
             <Header />
        </Affix>
        <Banner/>
+       <HotPC />
+
     </div>
 }
 export default IndexPage
