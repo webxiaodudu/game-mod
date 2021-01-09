@@ -7,7 +7,7 @@ const connection = mysql.createConnection({
     user: 'root',
     database: 'game_mod',
     //password:'pltkd@198526'
-    password:'123456'
+    password:'henryLiu521'
   });
 
 function query (sql,value){
