@@ -4,9 +4,10 @@ import { Menu } from 'antd';
 import style from './index.module.css'
 const data = [
     {id:'1',txt:'首页',to:'/'},
-    {id:'2',txt:'mod集合',to:'/modpage'},
-    {id:'3',txt:'游戏攻略',to:'/strategy'},
-    {id:'4',txt:'游戏社区',to:'/comment'}
+    {id:'2',txt:'PC单机游戏',to:'/pcgame'},
+    {id:'3',txt:'单机mod模组',to:'/modpage'},
+    {id:'4',txt:'游戏攻略',to:'/strategy'},
+    {id:'5',txt:'游戏社区',to:'/comment'}
 ]
 function Nav(props){
     const {pathname} = useLocation();

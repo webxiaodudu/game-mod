@@ -4,6 +4,7 @@ import Modpage from '../pages/modpage'
 import Strategy from '../pages/strategy'
 import Comment from '../pages/comment'
 import Regesiter from '../pages/regesiter'
+import PcgamePage from '@/pages/pcgame'
 const routes = [
     //首页
     {
@@ -13,6 +14,14 @@ const routes = [
         return <IndexPage {...props} />
       }
     },
+    //单机游戏
+    {
+      path: '/pcgame',
+      exact: false,
+      render(props) {
+        return <PcgamePage {...props} />
+      }
+   },
     //Mod合集
    {
       path: '/modpage',
