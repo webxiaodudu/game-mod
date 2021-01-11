@@ -22,7 +22,7 @@ router.post('/login',async (ctx)=>{
 
     if(res){
        const token = jwt.sign({username,password},'wangpaijun')
-        ctx.set('Authorization',token)
+        ctx.set('Authorization','Bearer '+token)
         return ctx.body = new SucessModel(res,'登陆成功')
     }
     else{
