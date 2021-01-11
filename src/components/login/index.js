@@ -14,7 +14,8 @@ const layout = {
   },
   labelAlign:'left'
 };
-export default function Login(){
+export default function Login(props){
+  const { setLoginState } = props
     const [loginForm] = Form.useForm();
     const [isShow,setShow] = useState(false)
     const dispatch = useDispatch()
@@ -46,8 +47,11 @@ export default function Login(){
         }
           
           setShow(false);
+          const { nickname,uid} = res.data.data
+          localStorage.setItem('nickname',nickname)
+          localStorage.setItem('uid',uid)
+          setLoginState(true)
          
-          dispatch({type:'Logined',userInfo:res.data.data})
        }
        else{
         message.error(msg);

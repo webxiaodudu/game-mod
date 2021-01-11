@@ -1,17 +1,20 @@
+import { useState } from 'react'
 import { Avatar ,Menu, Dropdown} from 'antd';
 import { UserOutlined,DownOutlined } from '@ant-design/icons';
-import { useSelector,useDispatch } from 'react-redux';
+
 import style from './index.module.css'
 
-export default function User(){
+export default function User(props){
     
-   const userInfo = useSelector(state=>state.login.userInfo)
-   const { nickname } = userInfo
-   const dispatch = useDispatch()
+  const { setLoginState } = props
+   const name = localStorage.getItem('nickname')||''
+   const [nickname, setNickName] = useState(name);
+  
    
    const loginOut = () =>{
-        dispatch({type:'LoginOut'})
-        localStorage.clear()
+       
+        localStorage.clear();
+        setLoginState(false)
    }
 
    const menu = (

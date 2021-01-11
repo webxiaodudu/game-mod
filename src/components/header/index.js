@@ -1,15 +1,14 @@
-import { useSelector } from 'react-redux'
+import { useState }from 'react'
 import { Layout ,Row, Col} from 'antd';
 import Logo from '../logo'
 import Nav from '../nav'
 import Login from '../login'
 import User from '../user'
-
 const { Header } = Layout
 
 export default function HeaderComponent(){
-    const isLogin = useSelector(state=>state.login.isLogin)
-    
+    const token = localStorage.getItem('jwt')||''
+    const [isLogin,setLoginState] = useState(token) 
     return <div>
         <Header>
                 <div className="header-wrap">
@@ -21,7 +20,7 @@ export default function HeaderComponent(){
                             <Nav />
                         </Col>
                         <Col span={4}>
-                           {isLogin ? <User />: <Login />}
+                           {isLogin ? <User setLoginState={setLoginState} />: <Login setLoginState={setLoginState}/>}
                         </Col>
                     </Row>
                 </div>
