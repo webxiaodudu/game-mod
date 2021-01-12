@@ -38,3 +38,13 @@
     background-position:left top;
     background-repeat:no-repeat;
 }
+.hotItemList{
+    margin:0;
+    padding:0;
+}
+.hotItemList li{
+    margin:0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
