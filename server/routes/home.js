@@ -50,7 +50,7 @@ router.get('/getPcHotList',async (ctx)=>{
         
         if(res.length){
            const list =res.map(item=>{
-               item.img = '/static/pcgame'+item.img
+               item.cover = '/static/pcgame/'+item.cover
                return item
            })
             ctx.body=new SucessModel({list},'sucess')
@@ -65,5 +65,6 @@ router.get('/getPcHotList',async (ctx)=>{
      
 
 })
+
 
 module.exports = router;

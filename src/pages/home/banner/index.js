@@ -17,6 +17,11 @@ import useGetData from './hook/useGetData'
         getBannerData()
     },[])
     
+    const toDetail=(id)=>{
+        //跳转详情页
+        console.log(id)
+
+    }
     
 
     return <div className={style.bannerBox}>
@@ -29,7 +34,9 @@ import useGetData from './hook/useGetData'
                                                 <h2 className={style.bannerTile} >{banner.title}</h2>
                                                 <p className={style.subtit}>{banner.subtit}</p>
                                                 <p className={style.info}>{banner.info}</p>
-                                                <Button size='large' icon={<DoubleRightOutlined/>} type="dashed" ghost style={{marginTop:'30px'}}>了解详情</Button>
+                                                <Button size='large' icon={<DoubleRightOutlined/>} type="dashed" ghost style={{marginTop:'30px'}} onClick={()=>{
+                                                    toDetail(banner.pid)
+                                                }}>了解详情</Button>
                                             </div>
                                             
                                         </div>
