@@ -1,8 +1,9 @@
 
-import { Card } from 'antd';
+import { Card ,Button} from 'antd';
 import style from './index.module.css'
 import { useEffect  } from 'react'
 import useGetPCHotListData from './hook'
+import {DoubleRightOutlined }from '@ant-design/icons'
 const { Meta } = Card;
 const gameTypeMap = {
     '1':'角色扮演',
@@ -48,6 +49,7 @@ function HotPC(props){
                     
                     
                 </ul>
+                <p className={style.pcMore}><Button ghost icon={<DoubleRightOutlined/>} type="primary"  style={{color:'red',fontWeight:'bold'}} >更多游戏</Button></p>
             </div>
 }
 export default HotPC;
