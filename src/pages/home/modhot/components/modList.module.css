@@ -1,0 +1,17 @@
+.cover{
+    width:240px;
+    height:200px;
+    background-size:cover;
+    background-position:left top;
+    background-repeat:no-repeat;
+}
+.modItemList{
+    margin:0;
+    padding:0;
+}
+.modItemList li{
+    margin:0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
