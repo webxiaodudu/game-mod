@@ -6,11 +6,14 @@ import useGetPCHotListData from './hook'
 import {DoubleRightOutlined }from '@ant-design/icons'
 const { Meta } = Card;
 const gameTypeMap = {
-    '1':'角色扮演',
-    '2':'即时战略',
-    '3':'第一人称射击',
-    '4':'第三人称射击',
-    '5':'战略策略游戏'
+    '1':'射击',
+    '2':'动作冒险',
+    '3':'角色扮演',
+    '4':'即时战略',
+    '5':'竞速',
+    '6':'体育',
+    '7':'模拟',
+    '8':'策略'
 }
 function HotPC(props){
     
