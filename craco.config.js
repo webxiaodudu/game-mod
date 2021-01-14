@@ -5,11 +5,11 @@ module.exports = {
   devServer: {
     proxy:{
       '/api': {
-        target: 'http://8.131.91.95:8888',
+        target: 'http://127.0.0.1:8888',
         pathRewrite: {'^/api' : ''}
       },
       '/static': {
-        target: 'http://8.131.91.95:8888',
+        target: 'http://127.0.0.1:8888',
         
       }
     }
