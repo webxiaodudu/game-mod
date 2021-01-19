@@ -17,8 +17,8 @@ function GameModFooter(){
             <Logo/>
         </Col>
         <Col span={8}>
-            <h2 style={{color:'#fff'}}>友情链接</h2>
-            <ul>
+            <h2 style={{color:'#fff',fontSize:'20px'}}>友情链接</h2>
+            <ul className={style.friendsList}>
                 {
                     friendsList.map(item=>{
                        return <li key={item.id}><a href={item.url}>{item.webname}</a></li>
