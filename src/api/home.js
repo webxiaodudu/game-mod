@@ -10,8 +10,13 @@ function getPCHotApi(option){
     return request.get('/getPcHotList',{params:option})
 }
 
+function getModListApi(option){
+    //获取MOd热门列表
+    return request.post('/getModhotList',option)
+}
 export {
     
     getBannerListApi,
-    getPCHotApi
+    getPCHotApi,
+    getModListApi
 }

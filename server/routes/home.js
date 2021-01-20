@@ -4,6 +4,7 @@ const { SucessModel ,ErrorModel } = require('../model/index')
 
 const { queryBannerList } = require('../controller/queryBanner')
 const { queryPcHot } = require('../controller/querPcHot')
+const {queryModList} = require('../controller/queryModList')
 /**banner */
 /**
  * url: /getBannerList
@@ -66,5 +67,31 @@ router.get('/getPcHotList',async (ctx)=>{
 
 })
 
+/**ModHOT */
+/**
+ * url: /getModhotList
+ * method:post
+ * body:
+ * {
+ *  limit:number,
+ *  type:string
+ * }
+ * 
+ */
+
+router.post('/getModhotList',async (ctx)=>{
+    
+    const { limit = 10, type='1' } = ctx.request.body;
+    try {
+        let list  = await queryModList(limit,type)
+        list.forEach(item=>{
+             item.cover = '/static/modgame/'+ item.cover
+        })
+        ctx.body= new SucessModel(list,'sucess')
+    } catch (error) {
+        ctx.body=new ErrorModel(error,'error')
+    }
+    
+})
 
 module.exports = router;
