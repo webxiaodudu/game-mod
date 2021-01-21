@@ -31,7 +31,9 @@ function ModHot (props){
    const {data,getData} = useGetModData(currentId)
 
    useEffect(() => {
+       
      getData(limit,currentId)
+
    },[currentId]);
 
    const onTabClick=(key)=>{

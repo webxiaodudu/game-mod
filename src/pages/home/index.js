@@ -9,8 +9,9 @@ function IndexPage(props){
             <Header />
        </Affix>
        <Banner/>
+       <ModHot />
        <HotPC />
-        <ModHot />
+        
     </div>
 }
 export default IndexPage

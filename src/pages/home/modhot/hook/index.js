@@ -10,7 +10,7 @@ function useGetModData(){
             console.log(res.data,'  getModListApi-res')
             setData(res.data)
           } catch (error) {
-              
+              console.log(error)
           }
           
 

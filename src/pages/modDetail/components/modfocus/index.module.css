@@ -1,0 +1,26 @@
+.ModForcus{
+    background:#fff;
+}
+.item{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    height:360px;
+    
+}
+.title{
+    display: flex;
+    align-items: center;
+    line-height:60px;
+    font-size:20px;
+    font-weight:bold;
+}
+.title:after,.title:before{
+    content: '';
+    width:10px;
+    height:30px;
+    display:inline-block;
+    background:rgb(245, 223, 51);
+    margin:0 20px;
+    transform: skew(-30deg);
+}
