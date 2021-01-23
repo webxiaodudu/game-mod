@@ -6,6 +6,7 @@ import Strategy from '../pages/strategy'
 import Comment from '../pages/comment'
 import Regesiter from '../pages/regesiter'
 import PcgamePage from '@/pages/pcgame'
+import PcGameDetail from '@/pages/pcDetail'
 const routes = [
     //首页
     {
@@ -22,6 +23,13 @@ const routes = [
       render(props) {
         return <PcgamePage {...props} />
       }
+   },
+   {
+     path:'/pcgameDetail/:id',
+     exact:false,
+     render(props){
+       return <PcGameDetail {...props}/>
+     }
    },
     //Mod合集
    {
