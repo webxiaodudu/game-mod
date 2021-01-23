@@ -1,6 +1,7 @@
 import IndexPage from '../pages/home'
 import Undefined from '../pages/404'
 import Modpage from '../pages/modpage'
+import ModDetail from '@/pages/modDetail'
 import Strategy from '../pages/strategy'
 import Comment from '../pages/comment'
 import Regesiter from '../pages/regesiter'
@@ -30,6 +31,14 @@ const routes = [
         return <Modpage {...props} />
       }
    },
+   //Mod详情
+   {
+    path: '/modDetail/:id',
+    exact: false,
+    render(props) {
+      return <ModDetail {...props} />
+    }
+ },
    //攻略
    {
         path: '/strategy',

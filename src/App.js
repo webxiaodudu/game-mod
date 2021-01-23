@@ -2,8 +2,8 @@
 import { Layout ,Row, Col} from 'antd';
 import Routes  from "./routes";
 
-
-const { Header, Footer, Content } = Layout;
+import Footer from '@/components/footer'
+const { Header, Content } = Layout;
 
 function App(props) {
 
@@ -13,7 +13,7 @@ function App(props) {
             <Content className="mainbody">
                 <Routes />
             </Content>
-            <Footer>Footer</Footer>
+            <Footer/>
         </Layout>
     )
 

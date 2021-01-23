@@ -6,6 +6,7 @@ const kaoJwt = require('koa-jwt');
 const registerRouter = require('./routes/register')//注册相关路由
 const loginRouter = require('./routes/login')//登录接口
 const homeRouter = require('./routes/home')//首页相关接口
+const modDetailRouter = require('./routes/modDetail')//mod详情接口
 const app= new Koa();
 app.use(staticCache({
     prefix: '/static',
@@ -20,13 +21,15 @@ const whiteArr = [
     /^\/register/,
     /^\/checkRegisterInfo/,
     /^\/getBannerList/,
-    /^\/getPcHotList/
+    /^\/getPcHotList/,
+    /^\/getModhotList/,
+    /^\/getModDetail/
 ]
 app.use(kaoJwt({secret:'wangpaijun'}).unless({ path: whiteArr }))
 app.use(registerRouter.routes())
 app.use(loginRouter.routes())
 app.use(homeRouter.routes())
-
+app.use(modDetailRouter.routes())
 
 app.listen(8888)
 
