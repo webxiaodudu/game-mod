@@ -1,0 +1,32 @@
+.descrbBox{
+    padding:20px;
+}
+.title{
+    display: flex;
+    align-items: center;
+    line-height:60px;
+    font-size:20px;
+    font-weight:bold;
+    color:#2e2e2e;
+}
+.title:after,.title:before{
+    content: '';
+    width:10px;
+    height:30px;
+    display:inline-block;
+    background-color:red;
+    margin:0 20px;
+    transform: skew(-30deg);
+}
+.descrbTit{
+    font-weight:bold;
+    font-size:24px;
+    text-shadow: 3px 2px 3px rgba(0,0,0,.5);
+}
+.descrb{
+    color:#333;
+    font-size:14px;
+    font-family: '微软雅黑';
+    line-height:26px;
+    text-indent: 2em;
+}
