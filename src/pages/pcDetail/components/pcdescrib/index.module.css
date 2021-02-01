@@ -1,0 +1,46 @@
+.describ{
+
+}
+.platform{
+    height:30px;
+    line-height:30px;
+}
+.name{
+    height:60px;
+    line-height:60px;
+    font-weight:bold;
+}
+.subname{
+    line-height:30px;
+    font: 14px/30px '微软雅黑';
+    color:#333;
+}
+.startTime{
+    height:40px;
+    line-height:40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    
+}
+.startTime span{
+    background:#8a8a8a;
+    padding:0 10px;
+    height:30px;
+    line-height:30px;
+}
+.infoBase{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.infoBase li{
+    flex:1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color:#333;
+    white-space: nowrap;
+    
+}

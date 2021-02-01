@@ -24,6 +24,7 @@ const routes = [
         return <PcgamePage {...props} />
       }
    },
+   //PC单机详情
    {
      path:'/pcgameDetail/:id',
      exact:false,

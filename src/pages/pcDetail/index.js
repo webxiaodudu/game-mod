@@ -2,6 +2,9 @@ import { Fragment} from 'react'
 import Header from '@/components/header'
 import { Affix, Row, Col } from 'antd'
 import style from './index.module.css'
+import DownLoad from './components/downLoad/downLoad.js'
+import Describ from './components/pcdescrib'
+import UserScore from './components/userScore'
 function PcGameDetail(props){
      return<Fragment>
             <Affix offsetTop={0}>
@@ -12,17 +15,17 @@ function PcGameDetail(props){
                     <Row>
                         <Col span={6}>
                             <div className={style.tlBox}>
-                            tlBox
+                            <DownLoad />
                             </div>
                         </Col>
                         <Col span={12}>
                         <div className={style.tcBox}>
-                        tcBox
-                            </div>
+                                <Describ/>
+                        </div>
                         </Col>
                         <Col span={6}>
                         <div className={style.trBox}>
-                        trBox
+                            <UserScore/>
                         </div>
                         </Col>
                     </Row>
