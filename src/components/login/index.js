@@ -18,6 +18,7 @@ export default function Login(props){
   const { setLoginState } = props
     const [loginForm] = Form.useForm();
     const [isShow,setShow] = useState(false)
+    
     const dispatch = useDispatch()
    
      const showModal = () => {
@@ -43,7 +44,8 @@ export default function Login(props){
        if(code==0){
          //登录成功后从返回的头信息里获取jwt存入缓存，同步redux中的用户信息
         if(res.headers&&res.headers.authorization){
-          localStorage.setItem('jwt',res.headers.authorization)
+          localStorage.setItem('jwt',res.headers.authorization);
+          dispatch({type:'setLogin'})
         }
           
           setShow(false);

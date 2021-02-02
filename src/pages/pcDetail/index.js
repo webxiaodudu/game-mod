@@ -5,6 +5,7 @@ import style from './index.module.css'
 import DownLoad from './components/downLoad/downLoad.js'
 import Describ from './components/pcdescrib'
 import UserScore from './components/userScore'
+import PicShow from './components/picshow'
 function PcGameDetail(props){
      return<Fragment>
             <Affix offsetTop={0}>
@@ -29,7 +30,10 @@ function PcGameDetail(props){
                         </div>
                         </Col>
                     </Row>
-                </div>    
+                </div> 
+                <div className={style.cbg}>
+                    <PicShow />
+                </div>   
             </div>
         </Fragment>
 }

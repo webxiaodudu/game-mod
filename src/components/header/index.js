@@ -1,4 +1,5 @@
-import { useState }from 'react'
+import { useState,useEffect }from 'react'
+import { useDispatch} from 'react-redux'
 import { Layout ,Row, Col} from 'antd';
 import Logo from '../logo'
 import Nav from '../nav'
@@ -9,6 +10,16 @@ const { Header } = Layout
 export default function HeaderComponent(){
     const token = localStorage.getItem('jwt')||''
     const [isLogin,setLoginState] = useState(token) 
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        if(isLogin){
+            dispatch({type:'setLogin'})
+        }
+        else{
+            dispatch({type:''})
+        }
+        
+    },[isLogin])
     return <div>
         <Header>
                 <div className="header-wrap">

@@ -1,7 +1,7 @@
 import {combineReducers, createStore} from "redux";
-import {testReducer} from "./reducer/test"
+import {loginReducer as isLogin} from "./reducer/loginReducer"
 const reducer = {
-  test:testReducer,
+  isLogin,
 }
 
 export default createStore(combineReducers(reducer))

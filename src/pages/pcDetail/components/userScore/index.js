@@ -1,5 +1,6 @@
 import style from './index.module.css'
 import { Row, Col } from 'antd';
+import UserStar from "../userStar";
 function UserScore(){
     return  <div className={style.userScore}>
         <Row gutter={24}>
@@ -33,6 +34,9 @@ function UserScore(){
                     </li>
                 </ul>
             </Col>
+        </Row>
+        <Row>
+            <Col span={24}><UserStar /></Col>
         </Row>
     </div>
 }
