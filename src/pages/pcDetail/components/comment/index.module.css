@@ -1,0 +1,52 @@
+.commentWrap{
+    
+}
+.title{
+   
+    padding:9px 10px;
+    border-bottom:1px dotted #ccc;
+    line-height:32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.t{
+    margin-left:15px;
+}
+.commentContent{
+    padding-top:20px;
+}
+.commtBox{
+    padding:30px 20px;
+    border-radius:14px;
+    background:#fff;
+}
+.commtHead{
+   
+    height:28px;
+    border-radius:14px;
+    border:1px solid #6b9af6;
+}
+.tb{
+    background:#6b9af6;
+    border-radius:14px;
+    height:28px;
+    width:25%;
+    text-align:center;
+    line-height:28px;
+}
+
+.openCommentBtn{
+    color:#fff;
+    background:#6b9af6;
+   height:30px;
+   width:100px;
+   border-radius:15px;
+   padding:0 10px;
+    font-size:14px;
+  cursor: pointer;
+    
+}
+.openCommentBtn:hover{
+    color:#fff;
+}

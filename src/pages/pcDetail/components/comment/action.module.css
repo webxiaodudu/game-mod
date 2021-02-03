@@ -1,0 +1,19 @@
+.actionBox{
+    font-size:16px;
+   
+}
+.replay{
+    cursor: pointer;
+}
+.actionBox a{
+    color:#ccc;
+}
+.replay{
+    margin-right:10px;
+}
+.ahref{
+    margin-right:10px;
+}
+.reEditWrap{
+    width:100%;
+}

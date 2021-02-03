@@ -20,4 +20,7 @@
 .cbg{
     background:url('../../asset/images/xs-c2-bg.jpg') no-repeat center top;
 }
-
+.bottomBg{
+    background-color:#e3e3e3;
+    padding:30px;
+}
