@@ -1,13 +1,18 @@
-import {Fragment, useState} from 'react'
+import {Fragment, useState,useEffect} from 'react'
+import { useParams } from 'react-router-dom'
 import style from './index.module.css'
 import { CommentOutlined,EditOutlined } from '@ant-design/icons'
 import CommentList  from './commList'
 import {Drawer,Comment, Avatar, Form, Button,Input} from 'antd'
+import request from '@/utils/request.js'
 const { TextArea } = Input
 function UserComment(){
-
+        const uid = localStorage.getItem('uid')
+       const {id:proId} = useParams()
         const [isVisible,setVisible]=useState(false)
         const [commentInner,setCommentInfo] = useState('')
+        
+      
         const openComment = ()=>{
             setVisible(true)
         }
@@ -17,8 +22,16 @@ function UserComment(){
         const onChange = ({target})=>{
             setCommentInfo(target.value)
         }
-        const onSubmit = ()=>{
+        const onSubmit = async ()=>{
             if(commentInner){
+                const option={
+                    uid,
+                    proId,
+                    content:commentInner,
+                    parentId:'0'
+                }
+                const res = await addComment(option)
+                console.log(res)
                 onClose()
                 setCommentInfo('')
             }
@@ -26,6 +39,17 @@ function UserComment(){
             
            
         }
+        const addComment=async (option)=>{
+            //添加评论接口
+            try{
+                return await request.post('/addPcDetailComment',option)
+            }catch(error){
+               return  console.log(error,' /addPcDetailComment接口报错')
+            }
+            
+        }
+
+       
     return <div className={style.commentWrap}>
             <h2 className={style.title}>
                 <span className={style.taolun}>
@@ -40,7 +64,7 @@ function UserComment(){
                         <div className={style.tb}>全部</div>
                     </div>
                     <div >
-                        <CommentList />
+                        <CommentList proId={proId}/>
                         
                     </div>
                     <Drawer 
