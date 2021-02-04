@@ -1,7 +1,9 @@
 import {combineReducers, createStore} from "redux";
-import {testReducer} from "./reducer/test"
+import {loginReducer as isLogin} from "./reducer/loginReducer"
+import {pcCommentReducer as pcCommentData } from './reducer/pcCommentReducer'
 const reducer = {
-  test:testReducer,
+  isLogin,
+  pcCommentData
 }
 
 export default createStore(combineReducers(reducer))

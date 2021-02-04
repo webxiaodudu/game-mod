@@ -12,7 +12,7 @@ request.interceptors.request.use(function (config) {
     
     if (Authorization) {
       
-      config.headers.Authorization = Authorization;
+      config.headers.Authorization ='Bearer '+ Authorization;
     }
     return config;
   }, function (error) {

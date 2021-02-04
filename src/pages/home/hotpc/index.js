@@ -2,6 +2,7 @@
 import { Card ,Button} from 'antd';
 import style from './index.module.css'
 import { useEffect  } from 'react'
+import {useHistory} from 'react-router-dom'
 import useGetPCHotListData from './hook'
 import {DoubleRightOutlined }from '@ant-design/icons'
 const { Meta } = Card;
@@ -18,18 +19,20 @@ const gameTypeMap = {
 function HotPC(props){
     
     const {hotList,getData} = useGetPCHotListData()
-
+    const history = useHistory()
     useEffect(() => {
         getData()
     },[]);
-
+    const toDetail = ({proId})=>{
+        history.push(`/pcgameDetail/${proId}`)
+    }
     return <div className={style.hotpc}>
                 <h2 className={style.hotpcTitle}><span style={{color:'red'}}>热门</span>单机推荐</h2>
                 <ul className={style.hotList}>
 
                     {
                         hotList.map((pcGame,index)=>{
-                            return <li key={pcGame.id}>
+                            return <li key={pcGame.id} onClick={()=>{toDetail(pcGame)}}>
                    
                             <Card
                                 hoverable

@@ -1,0 +1,26 @@
+.bg{
+    background:url('../../asset/images/bg.jpg') no-repeat center top;
+    padding-top:110px;
+}
+.topWrap{
+    background:url('../../asset/images/xs-c1-bg.png') no-repeat center top;
+    
+    padding:0 100px;
+}
+.tlBox{
+   
+}
+.tcBox{
+    
+    margin:0 30px;
+}
+.trBox{
+   
+}
+.cbg{
+    background:url('../../asset/images/xs-c2-bg.jpg') no-repeat center top;
+}
+.bottomBg{
+    background-color:#e3e3e3;
+    padding:30px;
+}

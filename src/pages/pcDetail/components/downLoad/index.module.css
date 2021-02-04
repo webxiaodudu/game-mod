@@ -1,0 +1,40 @@
+.downLoad{
+    min-width: 160px;
+}
+.imgWrap{
+    width:100%;
+}
+.downLoad img{
+    width:280px;
+    height:300px;
+}
+.btnGroup{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height:180px;
+}
+.btnGroup  a{
+    width:158px;
+    height:34px;
+    border-radius: 17px;
+    line-height:34px;
+    text-align:center;
+    margin:20px 0;
+}
+.downloadBtn{
+    color:#fff;
+   
+    background:#2194ff;
+}
+.downloadBtn:hover{
+    color:#fff;
+}
+.downPassWord{
+    border:1px solid #2194ff;
+    color:#2194ff;
+}
+.downPassWord:hover{
+    color:#2194ff;
+}

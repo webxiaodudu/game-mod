@@ -1,0 +1,58 @@
+.picshow{
+    padding:0 80px;
+    height:480px;
+}
+.bigPic{
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position:center;
+    height:480px;
+    width:100%;
+}
+.rightWrap{
+    padding:20px 10px;
+}
+.title{
+    height:30px;
+    border-radius: 15px;
+    background:#a6abaf;
+    
+}
+.title h2{
+    height:30px;
+    border-radius: 15px;
+    line-height:30px;
+    background:#172937;
+    width:146px;
+    color:#fff;
+    font-size:12px;
+    padding-left:10px;
+    box-sizing: border-box;
+}
+.scrollWrap{
+    margin-top:10px;
+    height:400px;
+    width:300px;
+    overflow-x:hidden;
+}
+.smallList{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap:wrap;
+   
+}
+.smallList li{
+    margin-top:20px;
+    width:120px;
+    height:90px;
+    background:green;
+    margin-right:10px;
+    background-size:cover;
+    background-repeat:'no-repeat';
+    background-position: center;
+    border:3px solid #fff;
+    
+}
+.smallList  :global(.active){
+    border:3px solid #67bdee; 
+}
