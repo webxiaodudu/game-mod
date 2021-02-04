@@ -25,7 +25,8 @@ const whiteArr = [
     /^\/getBannerList/,
     /^\/getPcHotList/,
     /^\/getModhotList/,
-    /^\/getModDetail/
+    /^\/getModDetail/,
+    /^\/getCommentList/
 ]
 app.use(kaoJwt({secret:'wangpaijun'}).unless({ path: whiteArr }))
 app.use(registerRouter.routes())

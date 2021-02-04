@@ -1,28 +1,34 @@
-import {Fragment, useState,useEffect} from 'react'
+import {Fragment, useState,useRef} from 'react'
 import { useParams } from 'react-router-dom'
 import style from './index.module.css'
 import { CommentOutlined,EditOutlined } from '@ant-design/icons'
 import CommentList  from './commList'
 import {Drawer,Comment, Avatar, Form, Button,Input} from 'antd'
 import request from '@/utils/request.js'
+import {useGetPcCommentList} from '@/store/hooks/useGetPcCommentList'
+
 const { TextArea } = Input
 function UserComment(){
         const uid = localStorage.getItem('uid')
        const {id:proId} = useParams()
         const [isVisible,setVisible]=useState(false)
         const [commentInner,setCommentInfo] = useState('')
-        
-      
+        const getCommentList = useGetPcCommentList()//获取评论列表方法
+       const instance = useRef()
         const openComment = ()=>{
+            //打开评论弹层
             setVisible(true)
         }
         const onClose=()=>{
+            //关闭弹层
             setVisible(false)
         }
         const onChange = ({target})=>{
+            //受控
             setCommentInfo(target.value)
         }
         const onSubmit = async ()=>{
+            //提交评论
             if(commentInner){
                 const option={
                     uid,
@@ -31,9 +37,11 @@ function UserComment(){
                     parentId:'0'
                 }
                 const res = await addComment(option)
-                console.log(res)
+               
                 onClose()
                 setCommentInfo('')
+                getCommentList({proId})
+                instance.current.onChange('1')
             }
             
             
@@ -64,8 +72,7 @@ function UserComment(){
                         <div className={style.tb}>全部</div>
                     </div>
                     <div >
-                        <CommentList proId={proId}/>
-                        
+                            <CommentList proId={proId}  ref={instance} />                       
                     </div>
                     <Drawer 
                             onClose={onClose}

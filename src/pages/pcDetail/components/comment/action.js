@@ -3,7 +3,7 @@ import {Tooltip} from 'antd'
 import { DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled } from '@ant-design/icons';
 import style from './action.module.css'
 import ReEdit from './reEdit'
-import context from '../../context'
+
 function ActionCom(props){
     const { commId} = props
     const [likes, setLikes] = useState(0);
@@ -38,7 +38,7 @@ function ActionCom(props){
                     </a>
             </Tooltip>
             <div className={style.reEditWrap}>
-            {isShow?<ReEdit setShow={setShow} />:''}
+            {isShow?<ReEdit setShow={setShow} commentId={commId}/>:''}
             </div>
         </div>
     )

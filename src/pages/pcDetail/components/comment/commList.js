@@ -1,137 +1,56 @@
-import { Comment, Tooltip, List,Pagination } from 'antd';
+import { Comment, List,Pagination } from 'antd';
 
-import moment from 'moment';
-import ActionCom from './action'
-import {Provider} from '../../context'
-import {useState,useEffect} from 'react'
-import request from '@/utils/request'
-function CommentList(props){
-    const [current,setCurrent] = useState('1')
-    const [size,setSize] = useState('5');
-    const [total,setTotal] = useState(0);
-    const { proId }= props
 
-    let data = [
-      {
-        
-        actions: [<ActionCom commId='112'/>],
-        author: 'Han Solo',
-        avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-        content: (
-          <p>
-            We supply a series of design principles, practical patterns and high quality design
-            resources (Sketch and Axure), to help people create their product prototypes beautifully and
-            efficiently.
-          </p>
-        ),
-        datetime: (
-          <Tooltip title={moment().subtract(1, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-            <span>{moment().subtract(1, 'days').fromNow()}</span>
-          </Tooltip>
-        ),
-        children:[
-          {
-              
-              actions: [<ActionCom commId='123'/>],
-              author: 'wwww',
-              avatar: 'https://images.ali213.net/picfile/pic/2015/04/01/120X90_2015040141603168.png',
-              content: (
-                <p>
-                  We supply a series of design principles, practical patterns and high quality design
-                  resources (Sketch and Axure), to help people create their product prototypes beautifully and
-                  efficiently.
-                </p>
-              ),
-              datetime: (
-                <Tooltip title={moment().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-                  <span>{moment().subtract(2, 'days').fromNow()}</span>
-                </Tooltip>
-              ),
-            },
-            {
-              
-              actions: [<ActionCom commId='124' />],
-              author: 'ccc',
-              avatar: 'https://images.ali213.net/picfile/pic/2015/04/01/120X90_2015040141603168.png',
-              content: (
-                <p>
-                  We supply a series of design principles, practical patterns and high quality design
-                  resources (Sketch and Axure), to help people create their product prototypes beautifully and
-                  efficiently.
-                </p>
-              ),
-              datetime: (
-                <Tooltip title={moment().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-                  <span>{moment().subtract(2, 'days').fromNow()}</span>
-                </Tooltip>
-              ),
-            }
-        ]
-      },
-      {
-          
-        actions: [<ActionCom commId="125"/>],
-        author: 'wwww',
-        avatar: 'https://images.ali213.net/picfile/pic/2015/04/01/120X90_2015040141603168.png',
-        content: (
-          <p>
-            We supply a series of design principles, practical patterns and high quality design
-            resources (Sketch and Axure), to help people create their product prototypes beautifully and
-            efficiently.
-          </p>
-        ),
-        datetime: (
-          <Tooltip title={moment().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-            <span>{moment().subtract(2, 'days').fromNow()}</span>
-          </Tooltip>
-        ),
-      },
-    ];
-
-    const [dataTree,setDataTree]= useState(data)
+import {useState,useEffect,useRef,useImperativeHandle,forwardRef} from 'react'
+import {useSelector} from 'react-redux'
+import {useGetPcCommentList} from '@/store/hooks/useGetPcCommentList'
+import {Provider} from '@/pages/pcDetail/context'
+function CommentList(props,ref){
+    const [current,setCurrent] = useState('1')//当前页
+    const [size,setSize] = useState('5');//每页显示条数
+    // const [total,setTotal] = useState(0);//评论数据总数
+    const data = useSelector(state=>state.pcCommentData)
+    const { proId }= props//proId游戏ID
+    const getCommentData=useGetPcCommentList();//获取数据方法
+    const commentListInstance = useRef();//为了父组件能获取子组件实例调用方法
+    const [curList,setCurList]=useState([])
+    const isUpdate = useRef(false)
+   const {total,list} =data
 
     const onChange = (page)=>{
+     
       setCurrent(page)
     }
 
-
+  //暴露给父组件方法提交评论后调用刷新列表
+    useImperativeHandle(ref,()=>{
+      return {
+        onChange,
+      }
+    })
 
     useEffect(()=>{
-      getCommentList()
+      
+        getCommentData({proId,current,size})
     },[current])
 
-    const getCommentList=async ()=>{
-      try{
-        const {data:{data}}=await request.get('/getCommentList',{params:{page:current,size,proId}})
-        const {total,list}=data
-        if(list.length){
-          console.log(list,'  list')
-          setTotal(total)
-        }
-        else{
-          console.log(list,'  list')
-        }
-      }catch(error){
-        console.log(error, ' /getCommentList接口报错')
-      }
-       
-       
-    }
-
+   
   
 
-      const getList = (data)=>{
+      const getList = (list)=>{
              return (
+               <Provider value={{current}}>
                 <List
                 className="comment-list"
                 itemLayout="horizontal"
-                dataSource={data}
+                dataSource={list}
                 renderItem={item => (
-                <li>
+                  
+                <li style={{borderBottom:`${item.parentId=='0'?'1px dotted #ccc':'none'}`}}>
                     <Comment
                     actions={item.actions}
                     author={item.author}
-                    avatar={item.avatar}
+                    avatar={item.avatar?item.avatar:'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'}
                     content={item.content}
                     datetime={item.datetime}
                    
@@ -142,13 +61,14 @@ function CommentList(props){
                 </li>
                 )}
             />
+            </Provider>
              )   
       }
-    return <div>
-           {getList(dataTree)}
+    return <div ref={commentListInstance}>
+           {getList(list)}
            <div style={{textAlign:'center',marginTop:'20px'}}>
              <Pagination
-              current={current} 
+              current={current*1} 
               onChange={onChange}
                total={total}
                pageSize={size}
@@ -156,4 +76,4 @@ function CommentList(props){
           </div>
         </div>
 }
-export default CommentList
+export default forwardRef(CommentList)

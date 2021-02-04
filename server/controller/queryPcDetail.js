@@ -9,16 +9,16 @@ const addComment=async (uid,proId,content,commentId,parentId,commentDate)=>{
 }
 
 //查询评论列表
-const queryCommentList = async (proId,page,size)=>{
-    const res = await query(`SELECT * FROM pcdetailcomment WHERE proId=? ORDER BY commentDate DESC LIMIT ?,?`,
-    [proId,(page-1)*size,size*1])
+const queryCommentList = async (proId)=>{
+    const res = await query(`SELECT pcdetailcomment.uid,pcdetailcomment.proId,pcdetailcomment.content,commentId,pcdetailcomment.parentId,pcdetailcomment.commentDate,pcdetailcomment.goodCount,pcdetailcomment.badCount,users.nickname,users.avater FROM pcdetailcomment INNER JOIN users ON pcdetailcomment.uid=users.uid WHERE proId=? ORDER BY commentDate DESC`,
+    [proId])
     return res
 }
 
 //查询某个proId的评论条数
 const queryByProIdCount = async (proId)=>{
-    const res = await query(`SELECT COUNT(*) FROM pcdetailcomment WHERE proId=?`,
-    [proId])
+    const res = await query(`SELECT COUNT(*) FROM pcdetailcomment WHERE proId=? and parentId=?`,
+    [proId,'0'])
     return res
 }
 

@@ -32,13 +32,13 @@ router.post('/addPcDetailComment',async (ctx)=>{
 })
 
 router.get('/getCommentList',async (ctx)=>{
-    const {proId,page,size} = ctx.query;
-    if(!proId||!page||!size){
+    const {proId} = ctx.query;
+    if(!proId){
         ctx.body = new ErrorModel('入参信息有误')
         return
     }
     try{
-        const res =await queryCommentList(proId,page,size)
+        const res =await queryCommentList(proId)
         const [{"COUNT(*)":total}] = await queryByProIdCount(proId)
      
         if(res.length){

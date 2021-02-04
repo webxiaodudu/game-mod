@@ -1,19 +1,44 @@
-import { Fragment,useState} from 'react'
+import { Fragment,useState,useContext} from 'react'
+import { useParams } from 'react-router-dom'
 import {Form,Button,Input} from 'antd'
-
+import request from '@/utils/request.js'
+import context from '../../context.js'
+import { useGetPcCommentList } from '@/store/hooks/useGetPcCommentList' 
 const { TextArea } = Input
 function ReEdit(props){
-    const { setShow } = props
+    const { setShow,commentId } = props
     const [val,setVal] = useState('')
-    
+    const {id:proId} = useParams();
+    const uid = localStorage.getItem('uid')
+    const {current} = useContext(context);
+    const getCommentList = useGetPcCommentList()
     const onChange =({target})=>{
         setVal(target.value)
     }
-    const onSubmit=()=>{
+    const addComment=async (option)=>{
+        //回复接口
+        try{
+            return await request.post('/addPcDetailComment',option)
+        }catch(error){
+           return  console.log(error,' /addPcDetailComment接口报错')
+        }
+        
+    }
+    const onSubmit=async ()=>{
        
         if(val){
-            console.log('提交回复！：',val);
+            const option={
+                uid,
+                proId,
+                content:val,
+                parentId:commentId
+            }
+            const res = await addComment(option)
             setShow(false)
+            setVal('')
+            console.log(proId,' ---proId')
+            getCommentList({proId,current})
+            //console.log(current,' --con')
         }
     }
     return (
