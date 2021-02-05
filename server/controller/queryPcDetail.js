@@ -22,8 +22,37 @@ const queryByProIdCount = async (proId)=>{
     return res
 }
 
+//查询原来的点赞数量
+const queryGoodNum = async (commentId)=>{
+    const res = await query(`SELECT goodCount FROM pcdetailcomment WHERE commentId=?`,[commentId])
+    return res
+}
+//pcDetail评论点赞
+
+const updateGoodNum = async (commentId,goodCount)=>{
+    
+    const res = await query(`UPDATE pcdetailcomment SET goodCount=? WHERE commentId=?`,[goodCount,commentId])
+    return res
+}
+//查询原来的踩数量
+const queryBadNum = async (commentId)=>{
+    const res = await query(`SELECT badCount FROM pcdetailcomment WHERE commentId=?`,[commentId])
+    return res
+}
+//pcDetail评论踩数量更新
+
+const updateBadNum = async (commentId,badCount)=>{
+    
+    const res = await query(`UPDATE pcdetailcomment SET badCount=? WHERE commentId=?`,[badCount,commentId])
+    return res
+}
+
 module.exports={
     addComment,
     queryCommentList,
-    queryByProIdCount
+    queryByProIdCount,
+    updateGoodNum,
+    queryGoodNum,
+    updateBadNum,
+    queryBadNum
 }
