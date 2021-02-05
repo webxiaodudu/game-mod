@@ -7,13 +7,15 @@ function toData(data){
   
     const copyData = JSON.parse(JSON.stringify(data))
     copyData.list = copyData.list.map(item=>{
-     const {commentId,nickname,avater,content,uid,proId,parentId,commentDate}=item
+     const {commentId,nickname,avater,content,uid,proId,parentId,commentDate,goodCount,badCount}=item
         return {
+          goodCount,
+          badCount,
           uid,
           proId,
           commentId,
           parentId,
-          actions: [<ActionCom commId={commentId}/>],
+          actions: [<ActionCom commId={commentId} goodCount={goodCount} badCount={badCount} />],
           author: nickname,
           avatar: avater,
           content: (
@@ -23,7 +25,7 @@ function toData(data){
           ),
           datetime: (
             <Tooltip title={commentDate}>
-              <span>{moment().subtract(1, 'days').fromNow()}</span>
+              <span>{moment(commentDate).fromNow()}</span>
             </Tooltip>
           ),
         }
@@ -62,82 +64,7 @@ function toTree(tempdata){
 }
 function useGetPcCommentList(){
     const dispatch = useDispatch()
-    // let data = [
-    //     {
-          
-    //       actions: [<ActionCom commId='112'/>],
-    //       author: 'Han Solo',
-    //       avatar: 'https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png',
-    //       content: (
-    //         <p>
-    //           We supply a series of design principles, practical patterns and high quality design
-    //           resources (Sketch and Axure), to help people create their product prototypes beautifully and
-    //           efficiently.
-    //         </p>
-    //       ),
-    //       datetime: (
-    //         <Tooltip title={moment().subtract(1, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-    //           <span>{moment().subtract(1, 'days').fromNow()}</span>
-    //         </Tooltip>
-    //       ),
-    //       children:[
-    //         {
-                
-    //             actions: [<ActionCom commId='123'/>],
-    //             author: 'wwww',
-    //             avatar: 'https://images.ali213.net/picfile/pic/2015/04/01/120X90_2015040141603168.png',
-    //             content: (
-    //               <p>
-    //                 We supply a series of design principles, practical patterns and high quality design
-    //                 resources (Sketch and Axure), to help people create their product prototypes beautifully and
-    //                 efficiently.
-    //               </p>
-    //             ),
-    //             datetime: (
-    //               <Tooltip title={moment().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-    //                 <span>{moment().subtract(2, 'days').fromNow()}</span>
-    //               </Tooltip>
-    //             ),
-    //           },
-    //           {
-                
-    //             actions: [<ActionCom commId='124' />],
-    //             author: 'ccc',
-    //             avatar: 'https://images.ali213.net/picfile/pic/2015/04/01/120X90_2015040141603168.png',
-    //             content: (
-    //               <p>
-    //                 We supply a series of design principles, practical patterns and high quality design
-    //                 resources (Sketch and Axure), to help people create their product prototypes beautifully and
-    //                 efficiently.
-    //               </p>
-    //             ),
-    //             datetime: (
-    //               <Tooltip title={moment().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-    //                 <span>{moment().subtract(2, 'days').fromNow()}</span>
-    //               </Tooltip>
-    //             ),
-    //           }
-    //       ]
-    //     },
-    //     {
-            
-    //       actions: [<ActionCom commId="125"/>],
-    //       author: 'wwww',
-    //       avatar: 'https://images.ali213.net/picfile/pic/2015/04/01/120X90_2015040141603168.png',
-    //       content: (
-    //         <p>
-    //           We supply a series of design principles, practical patterns and high quality design
-    //           resources (Sketch and Axure), to help people create their product prototypes beautifully and
-    //           efficiently.
-    //         </p>
-    //       ),
-    //       datetime: (
-    //         <Tooltip title={moment().subtract(2, 'days').format('YYYY-MM-DD HH:mm:ss')}>
-    //           <span>{moment().subtract(2, 'days').fromNow()}</span>
-    //         </Tooltip>
-    //       ),
-    //     },
-    //   ];
+    
     return async ({proId='',current='1',size='5'})=>{
         dispatch({type:'LIST_LOADING'});
 

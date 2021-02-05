@@ -8,7 +8,6 @@ import {Provider} from '@/pages/pcDetail/context'
 function CommentList(props,ref){
     const [current,setCurrent] = useState('1')//当前页
     const [size,setSize] = useState('5');//每页显示条数
-    // const [total,setTotal] = useState(0);//评论数据总数
     const data = useSelector(state=>state.pcCommentData)
     const { proId }= props//proId游戏ID
     const getCommentData=useGetPcCommentList();//获取数据方法
@@ -68,6 +67,7 @@ function CommentList(props,ref){
            {getList(list)}
            <div style={{textAlign:'center',marginTop:'20px'}}>
              <Pagination
+             hideOnSinglePage={true}
               current={current*1} 
               onChange={onChange}
                total={total}

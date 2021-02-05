@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import style from './index.module.css'
 import { CommentOutlined,EditOutlined } from '@ant-design/icons'
 import CommentList  from './commList'
-import {Drawer,Comment, Avatar, Form, Button,Input} from 'antd'
+import {Drawer,Comment, Avatar, Form, Button,Input,message} from 'antd'
 import request from '@/utils/request.js'
 import {useGetPcCommentList} from '@/store/hooks/useGetPcCommentList'
 
@@ -14,9 +14,22 @@ function UserComment(){
         const [isVisible,setVisible]=useState(false)
         const [commentInner,setCommentInfo] = useState('')
         const getCommentList = useGetPcCommentList()//获取评论列表方法
+        
+
        const instance = useRef()
         const openComment = ()=>{
             //打开评论弹层
+            const jwt = localStorage.getItem('jwt');
+            if(!jwt){
+                message.error({
+                    content: '请登录后再尝试此操作！',
+                    className: 'custom-class',
+                    style: {
+                      marginTop: '20vh',
+                    },
+                  });
+                  return
+            }
             setVisible(true)
         }
         const onClose=()=>{
